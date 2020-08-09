@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { Component } from 'react';
+import Greeting from './components/greetings';
+/*
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <Greet name="Ivan the Fool" />;
+}
+*/
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: 'unknown',
+      isGreetMode: true,
+    };
+  }
+  changeMode = () => {
+    const { isGreetMode } = this.state;
+    this.setState({
+      isGreetMode: !isGreetMode,
+    });
+  };
+  render() {
+    const { userName, isGreetMode } = this.state;
+    return (
+      <>
+        <button onClick={this.changeMode}>Mode</button>
+        <Greeting name={userName} isGreet={isGreetMode} />
+      </>
+    );
+  }
 }
 
 export default App;
