@@ -4,12 +4,16 @@ import React from 'react';
 const ListItem = (props) => {
   const {
     isSelected,
+    onSelect,
     user: { id, fname, lname },
   } = props;
-  const styles = { color: `rgb(255, 0, 0)` };
+  const styles = { color: `rgb(233, 123, 123)` };
   return (
     <li style={styles}>
-      UserID: "{id}"; UserFullName:"{fname} {lname}";
+      <span>
+        UserID: {id} UserFullName:{fname} {lname}
+      </span>
+      <button onClick={onSelect}>Select</button>
     </li>
   );
 };
